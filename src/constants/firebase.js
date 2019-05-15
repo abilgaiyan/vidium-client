@@ -1,5 +1,5 @@
 export default {
-  apiKey: 'AIzaSyBfyIbLnubVcKG6Sf_d4DHb_cnRR6Lkj4Y',
+  apiKey: '',
   authDomain: 'estore-4f7fd.firebaseapp.com',
   databaseURL: 'https://estore-4f7fd.firebaseio.com',
   projectId: 'estore-4f7fd',
