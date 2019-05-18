@@ -1,4 +1,4 @@
-import {STATUS_REPLACE} from './actiontypes';
+import {STATUS_REPLACE} from './actionTypes';
 
 /**
   * Show Error

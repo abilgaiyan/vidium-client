@@ -7,7 +7,7 @@ import TemplateSidebar from '../components/TemplateSidebar';
 
 // Routes
 
-
+import Home from '../components/Home';
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/SignUp';
 

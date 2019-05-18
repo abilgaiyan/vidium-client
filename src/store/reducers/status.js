@@ -1,4 +1,4 @@
-import {STATUS_REPLACE} from '../actions/actiontypes';
+import {STATUS_REPLACE} from '../actions/actionTypes';
 export const initialState = {
   loading: false,
   info: null,
