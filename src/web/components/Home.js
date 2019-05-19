@@ -102,13 +102,11 @@ const Home = () => (
           Auth
         </h3>
         <p>
-          Most apps need user authentication. Ready to go with Firebase Auth - but
+          Most apps need user authentication. Auth - but
           we can easily change that within the `/actions/member.js`
         </p>
         <p>
-          <a target="_blank" rel="noopener noreferrer" href="https://firebase.google.com/docs/auth/" className="btn btn-primary">
-            Firebase Auth Docs
-          </a>
+          
         </p>
       </Col>
     </Row>
