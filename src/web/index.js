@@ -1,37 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { PersistGate } from 'redux-persist/es/integration/react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import reduxThunk from "redux-thunk";
 
-import configureStore from '../store/index';
-import * as serviceWorker from './serviceWorker';
-import Routes from './routes/index';
+import reducers from "./reducers";
+import App from './components/App';
+// import Welcome from './components/Welcome';
+import Signup from './components/auth/Signup';
+import Signin from './components/auth/Signin';
+import FileUpload from "./components/FileUpload";
+import Signout from './components/auth/Signout';
+import Homepage from './components/Homepage'
 
-// Components
-import Loading from './components/Loading';
+const store = createStore(reducers, {
+    auth: { authenticated: localStorage.getItem('token') }
+}, applyMiddleware(reduxThunk))
 
-// Load css
-//import './styles/main.css';
-//import './styles/style.scss';
-
-
-const { persistor, store } = configureStore();
-// persistor.purge(); // Debug to clear persist
-
-const Root = () => (
-  <Provider store={store}>
-    <PersistGate loading={<Loading />} persistor={persistor}>
-      <Router>
-        <Routes />
-      </Router>
-    </PersistGate>
-  </Provider>
+ReactDOM.render(
+    <Provider store={store}>
+        <BrowserRouter>
+            <App>
+                <Route path="/" exact component={Signup} />
+                <Route path="/home" exact component={Homepage} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/fileUpload" component={FileUpload} />
+                <Route path="/signout" component={Signout} />
+                <Route path="/signin" component={Signin} />
+            </App>
+        </BrowserRouter>
+    </Provider>,
+    document.querySelector("#root")
 );
-
-ReactDOM.render(<Root />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
