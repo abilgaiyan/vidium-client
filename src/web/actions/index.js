@@ -1,11 +1,11 @@
 import axiox from 'axios';
 import { AUTH_USER, AUTH_ERROR } from "./types";
 
-const SERVICE_URL = 'http://localhost:4090'
+const SERVICE_URL = 'http://localhost:8080';
 
 export const signup = (formProps, callback) => async dispatch => {
     try {
-        const response = await axiox.post(`${SERVICE_URL}/signup`, formProps);
+        const response = await axiox.put(`${SERVICE_URL}/auth/signup`, formProps);
         dispatch(
             {
                 type: AUTH_USER,
@@ -24,7 +24,7 @@ export const signup = (formProps, callback) => async dispatch => {
 
 export const signin = (formProps, callback) => async dispatch => {
     try {
-        const response = await axiox.post(`${SERVICE_URL}/signin`, formProps);
+        const response = await axiox.post(`${SERVICE_URL}/auth/signin`, formProps);
         dispatch(
             {
                 type: AUTH_USER,
