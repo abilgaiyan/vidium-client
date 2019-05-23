@@ -42,6 +42,23 @@ class Signup extends Component {
                         </div>
                         <div className="row">
                             <div className="col-md-12">
+                                <div className="form-group mb-0">
+                                    <div className="input-group input_round top">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text"><i className="fas fa-user"></i></span>
+                                        </div>
+                                        <Field type="text" name="name" component="input" autoComplete="none" className="form-control" placeholder="UserName" />
+                                        <div className="input-group-append">
+                                            <span className="input-group-text">name</span>
+                                        </div>
+                                    </div>
+                                    <div className="help-block with-errors text-danger"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            <div className="col-md-12">
                                 <div className="form-group">
                                     <div className="input-group input_round bottom">
                                         <div className="input-group-prepend">
