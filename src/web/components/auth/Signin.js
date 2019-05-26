@@ -10,7 +10,7 @@ class Signin extends Component {
     onSubmit = formProps => {
         console.log(formProps)
         this.props.signin(formProps, () => {
-            this.props.history.push('/fileUpload')
+            this.props.history.push('/home')
         });
     }
 

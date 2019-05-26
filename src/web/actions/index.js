@@ -25,6 +25,7 @@ export const signup = (formProps, callback) => async dispatch => {
 export const signin = (formProps, callback) => async dispatch => {
     try {
         const response = await axiox.post(`${SERVICE_URL}/auth/signin`, formProps);
+        console.log(response);
         dispatch(
             {
                 type: AUTH_USER,
@@ -34,6 +35,7 @@ export const signin = (formProps, callback) => async dispatch => {
         localStorage.setItem('token', response.data.token)
         callback();
     } catch (error) {
+        console.log(error);
         dispatch({
             type: AUTH_ERROR,
             payload: "Invalid Credentials.."
