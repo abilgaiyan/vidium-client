@@ -1,6 +1,22 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
 
-export default class Homepage extends Component {
+import * as actions from "../../store/actions";
+
+
+class Homepage extends Component {
+
+    state = { file: null };
+
+    onSubmitHandler(event) {
+        event.preventDefault();
+        this.props.uploadFile(this.state.file, this.props.history);
+    }
+
+    onFileChange(event) {
+        this.setState({ file: event.target.files[0] });
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -45,12 +61,20 @@ export default class Homepage extends Component {
                                     </div>
                                 </form>
                                 <a className="or_btn" href="#">or</a>
-                                <form action="#" id="upload_media_2">
+                                <form onSubmit={this.onSubmitHandler.bind(this)} action="#" id="upload_media_2" >
                                     <div className="inner col m0">
                                         <h2>Upload From PC</h2>
                                         <h6>Via Frontend Uploader</h6>
                                         <img src={require('../images/upload-1.png')} alt="" />
                                         <h4>Select files to upload</h4>
+                                        <input
+                                            onChange={this.onFileChange.bind(this)}
+                                            type="file"
+                                            accept="video/*"
+                                        />
+                                        <button>
+                                            Upload Video
+                                        </button>
                                         <h5>or drag &amp; drop files</h5>
                                     </div>
                                 </form>
@@ -285,7 +309,7 @@ export default class Homepage extends Component {
                                     </li>
                                 </ul>
 
-                                <div className="card text-white bg-primary mb-3" style={{ "maxWidth": "18rem;" }}>
+                                <div className="card text-white bg-primary mb-3" style={{ "maxWidth": "18rem" }}>
                                     <div className="card-header">Header</div>
                                     <div className="card-body">
                                         <h5 className="card-title">Primary card title</h5>
@@ -316,3 +340,5 @@ export default class Homepage extends Component {
         )
     }
 }
+
+export default connect(null, actions)(Homepage)

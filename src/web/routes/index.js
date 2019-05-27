@@ -8,11 +8,15 @@ import TemplateSidebar from '../components/TemplateSidebar';
 // Routes
 
 import Home from '../components/Home';
-import SignUpContainer from '../../containers/SignUp';
-import SignUpComponent from '../components/SignUp';
+// import SignUpContainer from '../../containers/SignUp';
+// import SignUpComponent from '../components/SignUp';
+import SignUpNew from '../components/SignUpNew'
 
-import LoginContainer from '../../containers/Login';
-import LoginComponent from '../components/Login';
+// import LoginContainer from '../../containers/Login';
+// import LoginComponent from '../components/Login';
+import LoginNew from '../components/LoginNew';
+import SignOut from '../components/SignOut';
+import FileUpload from "../components/FileUpload";
 
 import ForgotPasswordContainer from '../../containers/ForgotPassword';
 import ForgotPasswordComponent from '../components/ForgotPassword';
@@ -33,22 +37,29 @@ const Index = () => (
         </TemplateSidebar>
       )}
     />
-    <Route
+    <Route path="/signup" component={SignUpNew} />
+    <Route path="/signin" component={LoginNew} />
+    <Route path="/signout" component={SignOut} />
+    <Route path="/fileupload" component={FileUpload} />
+
+
+
+    {/* <Route
       path="/sign-up"
       render={props => (
         <TemplateNothing pageTitle="Sign Up">
           <SignUpContainer {...props} Layout={SignUpComponent} />
         </TemplateNothing>
       )}
-    />
-    <Route
+    /> */}
+    {/* <Route
       path="/login"
       render={props => (
         <TemplateNothing pageTitle="Login">
           <LoginContainer {...props} Layout={LoginComponent} />
         </TemplateNothing>
       )}
-    />
+    /> */}
     <Route
       path="/forgot-password"
       render={props => (

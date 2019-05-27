@@ -8,15 +8,15 @@ import { Link } from 'react-router-dom';
 const SidebarNavItems = (props) => (
   <div>
     <NavItem>
-      <Link className={`nav-link ${window.location.pathname === '/' && 'active'}`} to="/">
+      <Link className={`nav-link ${window.location.pathname === '/' && 'active'}`} to="/signin">
         <i className="icon-home" />
         {' '}
         <span>
-          Home
+          Go To SignIn
         </span>
       </Link>
     </NavItem>
-  
+
   </div>
 );
 
