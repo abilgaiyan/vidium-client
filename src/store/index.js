@@ -1,35 +1,43 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import { persistStore, persistCombineReducers } from 'redux-persist';
-import storage from 'redux-persist/es/storage'; 
-import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from "redux";
+import ReduxThunk from "redux-thunk";
+
 import reducers from './reducers';
 
-// Redux Persist config
-const config = {
-  key: 'root',
-  storage,
-  blacklist: ['status'],
-};
+const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
-const reducer = persistCombineReducers(config, reducers);
+export default store;
+// import { createStore, applyMiddleware, compose } from 'redux';
+// import { persistStore, persistCombineReducers } from 'redux-persist';
+// import storage from 'redux-persist/es/storage'; 
+// import thunk from 'redux-thunk';
+// import reducers from './reducers';
 
-const middleware = [thunk];
+// // Redux Persist config
+// const config = {
+//   key: 'root',
+//   storage,
+//   blacklist: ['status'],
+// };
 
-const configureStore = () => {
-  const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const reducer = persistCombineReducers(config, reducers);
 
-  const store = createStore(
-    reducer,
-    composeEnhancer(applyMiddleware(...middleware)),
-  );
+// const middleware = [thunk];
 
-  const persistor = persistStore(
-    store,
-    null,
-    () => { store.getState(); },
-  );
+// const configureStore = () => {
+//   const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-  return { persistor, store };
-};
+//   const store = createStore(
+//     reducer,
+//     composeEnhancer(applyMiddleware(...middleware)),
+//   );
 
-export default configureStore;
+//   const persistor = persistStore(
+//     store,
+//     null,
+//     () => { store.getState(); },
+//   );
+
+//   return { persistor, store };
+// };
+
+// export default configureStore;
